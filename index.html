@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GIS Community System - Accueil</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Styles personnalisés pour la page */
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            background-color: #f8f9fa;
+        }
+
+        .navbar {
+            background-color: #ffffff !important;
+            transition: all 0.5s ease;
+        }
+
+        .navbar.scrolled {
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        /* Hero Section avec une seule image */
+        .hero-single-image-container {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .hero-single-image-container img {
+            height: 100vh;
+            width: 100%;
+            object-fit: cover;
+            filter: brightness(0.6);
+        }
+        
+        .hero-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+            color: white;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            font-weight: 300;
+        }
+
+        .btn-hero {
+            padding: 12px 28px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+        }
+
+        .btn-primary, .btn-primary:hover {
+            background-color: #87CEEB; /* Bleu ciel */
+            border-color: #87CEEB; /* Bleu ciel */
+            color: #212529; /* Texte sombre pour un bon contraste */
+        }
+
+        .btn-hero.btn-outline {
+            background-color: transparent;
+            border: 2px solid white;
+            color: white;
+        }
+
+        .btn-hero.btn-outline:hover {
+            background-color: white;
+            color: #87CEEB; /* Bleu ciel au survol */
+            transform: translateY(-3px);
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            width: 80px;
+            height: 4px;
+            background-color: #87CEEB; /* Bleu ciel */
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        /* Styles des cartes de service */
+        .service-card {
+            background-color: #fff;
+            border-radius: 1rem;
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            color: #87CEEB; /* Bleu ciel */
+            margin-bottom: 20px;
+        }
+        
+        /* Section À Propos */
+        .about-section {
+            background-color: #e9ecef;
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+
+        .about-image {
+            flex: 1;
+            text-align: center;
+        }
+
+        .about-image img {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 1rem;
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+        }
+
+        /* Section Statistiques */
+        .stats-section {
+            background-color: #87CEEB; /* Bleu ciel */
+            color: white;
+            text-align: center;
+        }
+
+        .stat-item {
+            padding: 20px;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+        }
+
+        .stat-label {
+            font-size: 1.2rem;
+            font-weight: 300;
+        }
+
+        /* Pied de page avec couleur Sky Blue */
+        .footer {
+            background-color: #87CEEB; /* Bleu ciel */
+            color: #212529;
+            padding: 60px 0;
+        }
+
+        .footer a {
+            color: #212529;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer a:hover {
+            color: #ffffff; /* Blanc au survol */
+        }
+
+        .footer h5 {
+            color: #212529;
+            margin-bottom: 20px;
+        }
+
+        .footer .text-muted {
+            color: #212529 !important;
+            opacity: 0.8;
+        }
+
+        .social-icons a {
+            font-size: 1.8rem;
+            margin-right: 15px;
+            transition: transform 0.3s ease, color 0.3s ease;
+            color: #212529; /* Couleur des icônes pour le contraste */
+        }
+        
+        .social-icons a:hover {
+            transform: translateY(-5px);
+            color: #ffffff; /* Blanc au survol */
+        }
+
+        /* Bouton WhatsApp flottant */
+        .whatsapp-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #25D366;
+            color: white;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .whatsapp-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+        
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <img src="https://via.placeholder.com/40x40.png?text=GCS" class="me-2 rounded-circle border border-info">
+                <span class="fw-bold">GCS</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link active" href="index.html">Accueil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="equipe.html">Équipe</a></li>
+                    <li class="nav-item"><a class="nav-link" href="apropos.html">À Propos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <a class="btn btn-primary btn-sm d-none d-lg-block ms-3" href="contact.html">Contactez-nous</a>
+        </div>
+    </nav>
+
+    <div id="accueil" class="page-container active">
+
+        <section class="hero-single-image-container">
+            <img src="images/ac2.jpg" class="d-block w-100" alt="Bureau d'équipes">
+            <div class="hero-content text-center">
+                <h1 class="hero-title">Services Numériques Innovants</h1>
+                <p class="hero-subtitle">Nous créons des solutions digitales sur mesure pour propulser votre entreprise vers le succès.</p>
+                <div class="mt-4">
+                    <a class="btn btn-primary btn-lg btn-hero" href="services.html">Nos Services</a>
+                    <a class="btn btn-lg btn-hero btn-outline ms-3" href="contact.html">Devis Gratuit</a>
+                </div>
+            </div>
+        </section>
+
+        <a href="https://wa.me/message/ET57UY7RT6QWE1" class="whatsapp-button" target="_blank" aria-label="Contacter via WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title">Nos Expertises</h2>
+                <div class="row g-4">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="service-card">
+                            <div class="service-icon">
+                                <i class="fas fa-globe"></i>
+                            </div>
+                            <h3 class="service-title">Sites Web</h3>
+                            <p class="service-description">Sites vitrine, e-commerce, applications web sur mesure</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="service-card">
+                            <div class="service-icon">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                            <h3 class="service-title">Applications Mobiles</h3>
+                            <p class="service-description">Apps iOS et Android natives et hybrides</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="service-card">
+                            <div class="service-icon">
+                                <i class="fas fa-desktop"></i>
+                            </div>
+                            <h3 class="service-title">Logiciels</h3>
+                            <p class="service-description">Solutions logicielles métier et systèmes de gestion</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="service-card">
+                            <div class="service-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <h3 class="service-title">Marketing Digital</h3>
+                            <p class="service-description">SEO, publicité en ligne, stratégies digitales</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section about-section">
+            <div class="container">
+                <div class="about-content">
+                    <div class="about-text">
+                        <h2 class="mb-4">Votre Partenaire Digital de Confiance</h2>
+                        <p class="mb-4">
+                            Depuis plus de 8 ans, nous accompagnons les entreprises dans leur transformation numérique. 
+                            Notre équipe d'experts combine créativité, innovation technique et stratégie commerciale 
+                            pour créer des solutions qui génèrent des résultats concrets.
+                        </p>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check-circle me-2 text-primary"></i> Expertise technique reconnue</li>
+                            <li><i class="fas fa-check-circle me-2 text-primary"></i> Approche personnalisée</li>
+                            <li><i class="fas fa-check-circle me-2 text-primary"></i> Support technique 24/7</li>
+                            <li><i class="fas fa-check-circle me-2 text-primary"></i> Garantie satisfaction client</li>
+                        </ul>
+                        <a class="btn btn-primary mt-3" href="apropos.html">En savoir plus</a>
+                    </div>
+                    <div class="about-image">
+                        <img src="images/ABOUT.jpg" alt="Notre équipe">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section stats-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="stat-item">
+                            <div class="stat-number" data-target="200">200+</div>
+                            <div class="stat-label">Projets Réalisés</div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="stat-item">
+                            <div class="stat-number" data-target="150">150+</div>
+                            <div class="stat-label">Clients Satisfaits</div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="stat-item">
+                            <div class="stat-number" data-target="8">8+</div>
+                            <div class="stat-label">Années d'Expérience</div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="stat-item">
+                            <div class="stat-number" data-target="247">24/7</div>
+                            <div class="stat-label">Support Client</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section cta-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 mx-auto text-center">
+                        <h2 class="mb-4">Prêt à Digitaliser Votre Entreprise ?</h2>
+                        <p class="mb-4 fs-5">Contactez-nous dès aujourd'hui pour un devis gratuit et personnalisé</p>
+                        <a class="btn btn-primary btn-lg btn-hero" href="contact.html">Demander un Devis</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <h5>GIS Community System</h5>
+                    <p class="text-muted">Des solutions numériques pour un monde plus intelligent.</p>
+                </div>
+                <div class="col-md-2">
+                    <h5>Navigation</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="equipe.html">Équipe</a></li>
+                        <li><a href="apropos.html">À Propos</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>Contact</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-map-marker-alt me-2"></i>Cameroun, Douala-Ndogsimbi</li>
+                        <li><i class="fas fa-envelope me-2"></i>talianelouboundzi@gmail.com</li>
+                        <li><i class="fas fa-phone me-2"></i>+237 652120631</li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>Suivez-nous</h5>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="text-center text-muted">
+                <p class="mb-0">© 2025 GIS Community System. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        // Changement de la navbar au défilement
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>

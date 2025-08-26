@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GIS Community System - Services</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <style>
+        /* Styles personnalisés pour la page */
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            background-color: #f8f9fa;
+        }
+
+        .navbar {
+            background-color: #ffffff !important;
+            transition: all 0.5s ease;
+        }
+
+        .navbar.scrolled {
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        /* Bannière avec image de fond */
+        .page-header {
+            background-image: url('images/service.jpg'); /* Remplacer par l'URL de l'image de votre choix */
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 200px 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .page-header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+          
+        }
+
+        .page-title, .page-subtitle {
+            position: relative;
+            z-index: 1;
+        }
+
+        .page-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+        }
+
+        .page-subtitle {
+            font-size: 1.75rem;
+            font-weight: 300;
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+        
+        /* Styles des cartes de service */
+        .service-card, .consulting-card {
+            background-color: #fff;
+            border-radius: 1rem;
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            text-align: center;
+            margin-bottom: 30px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
+        }
+        
+        .service-card:hover, .consulting-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
+        }
+
+        .service-icon {
+            font-size: 4rem;
+            color: #87CEEB;
+            margin-bottom: 25px;
+            animation: bounceIn;
+            animation-duration: 1.5s;
+        }
+        
+        .service-title {
+            font-weight: bold;
+            color: #007bff;
+            margin-bottom: 15px;
+        }
+        
+        .service-description {
+            color: #6c757d;
+        }
+        
+        .service-features {
+            text-align: left;
+            padding-left: 0;
+            list-style: none;
+        }
+
+        .service-features li {
+            margin-bottom: 10px;
+            color: #495057;
+        }
+        
+        .service-features i {
+            color: #28a745;
+            margin-right: 10px;
+        }
+
+        /* Styles de la carte de consulting */
+        .consulting-card .card-icon {
+            font-size: 4rem;
+            color: #87CEEB;
+            margin-bottom: 20px;
+        }
+        
+        /* Pied de page avec couleur Sky Blue */
+        .footer {
+            background-color: #87CEEB;
+            color: #212529;
+            padding: 60px 0;
+        }
+
+        .footer a {
+            color: #212529;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer a:hover {
+            color: #007bff;
+        }
+
+        .footer h5 {
+            color: #212529;
+            margin-bottom: 20px;
+        }
+
+        .footer .text-muted {
+            color: #212529 !important;
+            opacity: 0.8;
+        }
+
+        /* Icônes du pied de page en blanc */
+        .social-icons a {
+            font-size: 1.8rem;
+            margin-right: 15px;
+            transition: transform 0.3s ease, color 0.3s ease;
+            color: #ffffff;
+        }
+        
+        .social-icons a:hover {
+            transform: translateY(-5px);
+            color: #007bff;
+        }
+
+        /* Animations */
+        .animate__delay-1s { animation-delay: 1s; }
+        .animate__delay-2s { animation-delay: 2s; }
+        .animate__delay-3s { animation-delay: 3s; }
+        .animate__delay-4s { animation-delay: 4s; }
+        .animate__delay-5s { animation-delay: 5s; }
+
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top shadow-sm animate__animated animate__fadeInDown">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <img src="https://via.placeholder.com/40x40.png?text=GCS" class="me-2 rounded-circle border border-primary">
+                <span class="fw-bold">GCS</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Accueil</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="services.html">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="equipe.html">Équipe</a></li>
+                    <li class="nav-item"><a class="nav-link" href="apropos.html">À Propos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                </ul>
+                <a class="btn btn-primary btn-sm d-none d-lg-block ms-3 animate__animated animate__pulse animate__infinite" href="contact.html">Contactez-nous</a>
+            </div>
+        </div>
+    </nav>
+
+    <div id="services" class="page-container active">
+        <div class="page-header animate__animated animate__fadeIn">
+            <div class="container">
+                <h1 class="page-title animate__animated animate__fadeInDown">Nos Services</h1>
+                <p class="page-subtitle animate__animated animate__fadeInDown animate__delay-1s">Des solutions numériques complètes pour tous vos besoins</p>
+            </div>
+        </div>
+
+        <section class="section animate__animated animate__fadeInUp">
+            <div class="container">
+                <div class="row g-5">
+                    <div class="col-lg-6 animate__animated animate__fadeInUp animate__delay-1s">
+                        <div class="service-card h-100">
+                            <div class="service-icon">
+                                <i class="fas fa-globe"></i>
+                            </div>
+                            <h3 class="service-title">Développement Web</h3>
+                            <p class="service-description">Création de sites web modernes, responsives et optimisés pour le référencement</p>
+                            <ul class="service-features">
+                                <li><i class="fas fa-check"></i> Sites vitrine professionnels</li>
+                                <li><i class="fas fa-check"></i> E-commerce et boutiques en ligne</li>
+                                <li><i class="fas fa-check"></i> Applications web sur mesure</li>
+                                <li><i class="fas fa-check"></i> CMS et systèmes de gestion</li>
+                                <li><i class="fas fa-check"></i> Maintenance et support</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 animate__animated animate__fadeInUp animate__delay-1-5s">
+                        <div class="service-card h-100">
+                            <div class="service-icon">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                            <h3 class="service-title">Applications Mobiles</h3>
+                            <p class="service-description">Développement d'applications iOS et Android performantes et intuitives</p>
+                            <ul class="service-features">
+                                <li><i class="fas fa-check"></i> Applications natives iOS/Android</li>
+                                <li><i class="fas fa-check"></i> Apps hybrides cross-platform</li>
+                                <li><i class="fas fa-check"></i> Interface utilisateur moderne</li>
+                                <li><i class="fas fa-check"></i> Intégration API et services</li>
+                                <li><i class="fas fa-check"></i> Publication sur les stores</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 animate__animated animate__fadeInUp animate__delay-2s">
+                        <div class="service-card h-100">
+                            <div class="service-icon">
+                                <i class="fas fa-desktop"></i>
+                            </div>
+                            <h3 class="service-title">Logiciels sur Mesure</h3>
+                            <p class="service-description">Solutions logicielles adaptées aux besoins spécifiques de votre entreprise</p>
+                            <ul class="service-features">
+                                <li><i class="fas fa-check"></i> Logiciels de gestion métier</li>
+                                <li><i class="fas fa-check"></i> Systèmes de facturation</li>
+                                <li><i class="fas fa-check"></i> CRM et ERP personnalisés</li>
+                                <li><i class="fas fa-check"></i> Automatisation de processus</li>
+                                <li><i class="fas fa-check"></i> Formation et accompagnement</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 animate__animated animate__fadeInUp animate__delay-2-5s">
+                        <div class="service-card h-100">
+                            <div class="service-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <h3 class="service-title">Marketing Digital</h3>
+                            <p class="service-description">Stratégies digitales pour augmenter votre visibilité et vos ventes en ligne</p>
+                            <ul class="service-features">
+                                <li><i class="fas fa-check"></i> Référencement SEO/SEA</li>
+                                <li><i class="fas fa-check"></i> Publicité Google Ads & Facebook</li>
+                                <li><i class="fas fa-check"></i> Marketing sur réseaux sociaux</li>
+                                <li><i class="fas fa-check"></i> Email marketing</li>
+                                <li><i class="fas fa-check"></i> Analyse et reporting</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section bg-light animate__animated animate__fadeInUp animate__delay-3s">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8 text-center mb-5">
+                        <h2 class="fw-bold animate__animated animate__fadeInDown">Un projet ? Des questions ?</h2>
+                        <p class="lead animate__animated animate__fadeInDown animate__delay-1s">Notre expertise à votre service pour concrétiser vos idées les plus ambitieuses.</p>
+                    </div>
+                    <div class="col-lg-6 col-md-8 animate__animated animate__fadeInUp animate__delay-1-5s">
+                        <div class="consulting-card">
+                            <i class="fas fa-chalkboard-teacher card-icon animate__animated animate__pulse animate__infinite"></i>
+                            <h3 class="fw-bold">Conseil & Stratégie</h3>
+                            <p class="text-muted">Nous vous aidons à définir la meilleure stratégie numérique pour atteindre vos objectifs d'affaires.</p>
+                            <a href="contact.html" class="btn btn-primary mt-3 animate__animated animate__rubberBand animate__delay-2s">Demandez un devis gratuit</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <footer class="footer animate__animated animate__fadeInUp">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <h5>GIS Community System</h5>
+                    <p class="text-muted">Des solutions numériques pour un monde plus intelligent.</p>
+                </div>
+                <div class="col-md-2">
+                    <h5>Navigation</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="equipe.html">Équipe</a></li>
+                        <li><a href="apropos.html">À Propos</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>Contact</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-map-marker-alt me-2"></i>Cameroun, Douala-Ndogsimbi</li>
+                        <li><i class="fas fa-envelope me-2"></i>talianelouboundzi@gmail.com</li>
+                        <li><i class="fas fa-phone me-2"></i>+237 652120631</li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>Suivez-nous</h5>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="text-center text-muted">
+                <p class="mb-0">© 2025 GIS Community System. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Changement de la navbar au défilement
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>
